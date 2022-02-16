@@ -33,6 +33,15 @@ class FeatureContext extends DuskTestCase implements Context
      */
     public function iShouldSee($arg1)
     {
-        $this->browser->assertSee('Laravel');
+        $this->browser->assertSee($arg1);
+    }
+
+
+    /**
+     * @Then I should see the grid
+     */
+    public function iShouldSeeTheGrid()
+    {
+        $this->browser->assertPresent(".grid");
     }
 }
