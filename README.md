@@ -9,11 +9,13 @@ Laravel dusk app with behat tests on MacOS.
  chrome
 
 ## Installation
-Install dependencies - ```cd example-app && composer install```
+Install dependencies - ```cd laravel-dusk-behat && composer install```
 
 Start sail - ```./vendor/bin/sail up -d```
 
 Install dusk - ```php artisan dusk:install```
+
+copy env file - ```cp .env.example .env```
 
 run behat homepage tests - ```cd tests && ../vendor/bin/behat```
 
