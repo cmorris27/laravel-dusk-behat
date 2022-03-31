@@ -11,9 +11,11 @@ class FeatureContext extends DuskTestCase implements Context
 {
     private Browser $browser;
 
+
     public function __construct($name = null, array $data = [], $dataName = '')
     {
         parent::__construct($name, $data, $dataName);
+//     inheritance. feature context is inheriting from duskTestCase. all parent is doing is calling the contructor in dusk testcase
         parent::setUp();
         static::startChromeDriver();
     }
@@ -24,7 +26,8 @@ class FeatureContext extends DuskTestCase implements Context
     public function visitHomePage()
     {
         $this->browse(function (Browser $browser) {
-            $this->browser = $browser->visit('http://127.0.0.1:8080');
+//            annonymous/hidden function.
+            $this->browser = $browser->visit('wp-login.php');
         });
     }
 
@@ -34,8 +37,8 @@ class FeatureContext extends DuskTestCase implements Context
     public function iShouldSee($arg1)
     {
         $this->browser->assertSee($arg1);
+//         $this->browser->click();
     }
-
 
     /**
      * @Then I should see the grid
@@ -44,4 +47,25 @@ class FeatureContext extends DuskTestCase implements Context
     {
         $this->browser->assertPresent(".grid");
     }
+
+    /**
+     * @Then page title should read :arg1
+     */
+    public function pageTitleShouldRead($arg1)
+    {
+        $this->browser->assertTitle($arg1);
+    }
+
+    /**
+     * @Then I sign in
+     */
+    public function iSignIn()
+    {
+        $this->browser->type('log', 'superadmin');
+        $this->browser->type('pwd', 'superadmin');
+        $this->browser->press('Log In');
+        $this->browser->assertTitle('Dashboard ‹ The Sun — WordPress');
+    }
+
+
 }
