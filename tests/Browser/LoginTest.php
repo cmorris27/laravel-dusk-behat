@@ -4,6 +4,7 @@ namespace Tests\Browser;
 
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Laravel\Dusk\Browser;
+use Tests\Browser\Pages\LoginPage;
 use Tests\DuskTestCase;
 
 class LoginTest extends DuskTestCase
@@ -19,7 +20,7 @@ class LoginTest extends DuskTestCase
     public function testExample()
     {
         $this->browse(function (Browser $browser) {
-            $browser->visit('/')
+            $browser->visit(new LoginPage)
                     ->assertSee('Laravel');
         });
     }

@@ -20,4 +20,8 @@ class LoginPage extends Page
             '@login' => '#wp-submit',
         ];
     }
+
+    public function url(): string {
+        return 'wp-login.php';
+    }
 }
