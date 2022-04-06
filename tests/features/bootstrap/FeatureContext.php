@@ -3,6 +3,7 @@
 use Behat\Behat\Context\Context;
 use Tests\DuskTestCase;
 use Laravel\Dusk\Browser;
+use Tests\Browser\Pages\LoginPage;
 
 /**
  * Defines application features from the specific context.
@@ -61,10 +62,10 @@ class FeatureContext extends DuskTestCase implements Context
      */
     public function iSignIn()
     {
-        $this->browser->type('log', 'superadmin');
-        $this->browser->type('pwd', 'superadmin');
-        $this->browser->waitFor('#wp-submit', 10);
-        $this->browser->press('#wp-submit');
+        $this->browser->type('@username', 'superadmin');
+        $this->browser->type('@password', 'superadmin');
+        $this->browser->waitFor('@login', 10);
+        $this->browser->press('@login');
         $this->browser->assertTitle('Dashboard ‹ The Sun — WordPress');
     }
 
