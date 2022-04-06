@@ -63,7 +63,8 @@ class FeatureContext extends DuskTestCase implements Context
     {
         $this->browser->type('log', 'superadmin');
         $this->browser->type('pwd', 'superadmin');
-        $this->browser->press('Log In');
+        $this->browser->waitFor('#wp-submit', 10);
+        $this->browser->press('#wp-submit');
         $this->browser->assertTitle('Dashboard ‹ The Sun — WordPress');
     }
 
